@@ -1,4 +1,4 @@
-package hugo.weaving.internal;
+package alfred.weaving.internal;
 
 import android.os.Looper;
 import android.util.Log;
@@ -14,7 +14,7 @@ import org.aspectj.lang.reflect.CodeSignature;
  */
 
 @Aspect
-public class CheckThread {
+public class Alfred {
 
     @Pointcut("execution(@CheckThread * *(..))")
     public void method() {}

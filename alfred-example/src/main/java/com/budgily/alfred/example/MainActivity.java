@@ -6,16 +6,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import hugo.weaving.CheckThread;
+import com.ubiquoid.alfred.example.R;
 
+import alfred.weaving.CheckThread;
 
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
 
     private class CheckThreadAsyncTask extends AsyncTask<Void, Void, Void> {
-
-
 
         @CheckThread
         @Override protected void onPreExecute() {
