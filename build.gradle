@@ -24,18 +24,18 @@ allprojects {
 
 task cleanExample(type: Exec) {
   executable = '../gradlew'
-  workingDir = project.file('hugo-example')
+  workingDir = project.file('alfred-example')
   args = [ 'clean' ]
 }
 
 task assembleExample(type: Exec) {
   executable = '../gradlew'
-  workingDir = project.file('hugo-example')
+  workingDir = project.file('alfred-example')
   args = [ 'assemble' ]
 }
 
 task installExample(type: Exec) {
   executable = '../gradlew'
-  workingDir = project.file('hugo-example')
+  workingDir = project.file('alfred-example')
   args = [ 'installDebug' ]
 }

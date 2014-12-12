@@ -1,28 +1,24 @@
-Hugo
-====
+Alfred
+======
 
-Annotation-triggered method call logging for your debug builds.
+Annotation-triggered helpers for your project. Alfred at your service.
 
-As a programmer, you often add log statements to print method calls, their arguments, their return
-values, and the time it took to execute. This is not a question. Every one of you does this.
-Shouldn't it be easier?
 
-Simply add `@DebugLog` to your methods and you will automatically get all of the things listed above
-logged for free.
+Simply add `@CheckThread` to your methods and you will automatically get the name of the Thread
+your method runs in.
 
 ```java
-@DebugLog
-public String getName(String first, String last) {
-  SystemClock.sleep(15); // Don't ever really do this!
-  return first + " " + last;
+
+@CheckThread
+public String getPosts() {
+
 }
 ```
 ```
-D/Example: ⇢ getName(first="Jake", last="Wharton")
-D/Example: ⇠ getName [16ms] = "Jake Wharton"
+// code of result
 ```
 
-The logging will only happen in debug builds and the annotation itself is never present in the
+Every annotation helper will happen in debug builds and the annotation itself is never present in the
 compiled class file for any build type. This means you can keep the annotation and check it into
 source control. It has zero effect on non-debug builds.
 
@@ -35,12 +31,12 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.jakewharton.hugo:hugo-plugin:1.1.0'
+    classpath 'com.ubiquoid.alfred:alfred-plugin:1.0'
   }
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.ubiquoid.alfred'
 ```
 
 
@@ -58,7 +54,7 @@ Working on this project? Here's some helpful Gradle tasks:
 License
 --------
 
-    Copyright 2013 Jake Wharton
+    Copyright 2014 Alexander Gherschon
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
