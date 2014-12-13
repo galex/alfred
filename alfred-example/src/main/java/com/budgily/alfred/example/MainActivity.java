@@ -3,7 +3,6 @@ package com.budgily.alfred.example;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.ubiquoid.alfred.example.R;
@@ -20,13 +19,11 @@ public class MainActivity extends Activity {
         @Override protected void onPreExecute() {
 
             super.onPreExecute();
-            Log.d(TAG, "onPreExecute()");
         }
 
         @CheckThread
         protected Void doInBackground(Void... params) {
 
-            Log.d(TAG, "doInBackground()");
             return null;
         }
 
@@ -34,7 +31,6 @@ public class MainActivity extends Activity {
         @Override protected void onPostExecute(Void aVoid) {
 
             super.onPostExecute(aVoid);
-            Log.d(TAG, "onPostExecute()");
         }
     }
 

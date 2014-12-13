@@ -14,12 +14,12 @@ import org.aspectj.lang.reflect.CodeSignature;
  */
 
 @Aspect
-public class Alfred {
+public class CheckThread {
 
-    @Pointcut("execution(@CheckThread * *(..))")
+    @Pointcut("execution(@alfred.weaving.CheckThread * *(..))")
     public void method() {}
 
-    @Pointcut("execution(@CheckThread *.new(..))")
+    @Pointcut("execution(@alfred.weaving.CheckThread *.new(..))")
     public void constructor() {}
 
     @Around("method() || constructor()")
@@ -30,7 +30,7 @@ public class Alfred {
         Class<?> cls = codeSignature.getDeclaringType();
         String methodName = codeSignature.getName();
 
-        StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder("CheckThread ");
         builder.append(prettyClassName(cls) + "#"+ methodName);
 
         if (Looper.myLooper() == Looper.getMainLooper()) builder.append(" @[MainThread]");
