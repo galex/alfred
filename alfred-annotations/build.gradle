@@ -28,7 +28,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.ubiquoid.alfred'
             artifactId 'alfred-annotations'
-            version '0.2'
+            version VERSION_NAME
             from components.java
 
             artifact sourcesJar {
@@ -48,9 +48,11 @@ bintray {
 
     dryRun = false //Whether to run this as dry-run, without deploying
     publish = false //If version should be auto published after an upload
+
+
     pkg {
         repo = 'maven'
-        name = 'alfred'
+        name = GROUP + ":alfred-annotations"
         desc = 'Annotation-triggered helpers'
         websiteUrl = 'https://github.com/galex/alfred/'
         issueTrackerUrl = 'https://github.com/galex/alfred/issues'
@@ -59,42 +61,5 @@ bintray {
         labels = ['android', 'alfred','annotations']
         publicDownloadNumbers = true
         publications = ['mavenJava']
-        //Optional version descriptor
-        version {
-            name = '0.2'
-            //desc = 'optional, version-specific description'
-            //released  = 'optional, date of the version release' //2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
-            vcsTag = '0.2'
-        }
     }
 }
-
-
-/*modifyPom {
-  project {
-    name "Alfred Annotations"
-    description POM_DESCRIPTION
-    url POM_URL
-
-    scm {
-      url POM_SCM_URL
-      connection POM_SCM_CONNECTION
-      developerConnection POM_SCM_DEV_CONNECTION
-    }
-
-    licenses {
-      license {
-        name POM_LICENCE_NAME
-        url POM_LICENCE_URL
-        distribution POM_LICENCE_DIST
-      }
-    }
-
-    developers {
-      developer {
-        id POM_DEVELOPER_ID
-        name POM_DEVELOPER_NAME
-      }
-    }
-  }
-}*/

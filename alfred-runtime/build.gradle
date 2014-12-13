@@ -79,40 +79,6 @@ task install(type: Exec, dependsOn: assemble) {
   ]
 }
 
-//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
-
-// Maven and bintray stuff
-/* aar
-bintray {
-    user bintray_user
-    key bintray_pass
-
-    dryRun = false //Whether to run this as dry-run, without deploying
-    publish = false //If version should be auto published after an upload
-
-    configurations = [ 'archives' ]
-
-    pkg {
-        repo = 'maven'
-        name = 'alfred'
-        desc = 'Annotation-triggered helpers'
-        websiteUrl = 'https://github.com/galex/alfred/'
-        issueTrackerUrl = 'https://github.com/galex/alfred/issues'
-        vcsUrl = 'https://github.com/galex/alfred/'
-        licenses = ['Apache-2.0']
-        labels = ['android', 'alfred','annotations']
-        publicDownloadNumbers = true
-        //publications = ['mavenJava']
-        //Optional version descriptor
-        version {
-            name = '0.2'
-            //desc = 'optional, version-specific description'
-            //released  = 'optional, date of the version release' //2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
-            vcsTag = '0.2'
-        }
-    }
-}*/
-
 task androidJavadocs(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
@@ -128,22 +94,16 @@ task androidSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
 }
 
-/*task androidReleaseJar(type: Jar, dependsOn: assembleRelease) {
-    from "$buildDir/classes/release/"
-}*/
-
-/*artifacts {
-    archives androidSourcesJar
-    archives androidJavadocsJar
-}*/
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
 
+            artifact ("build/outputs/aar/alfred-runtime-${version}.aar") {
+                //classifier "aar"
+            }
             groupId 'com.ubiquoid.alfred'
             artifactId 'alfred-runtime'
-            version '0.2'
+            version '0.3'
 
             artifact androidSourcesJar {
                 classifier "sources"
@@ -163,7 +123,7 @@ bintray {
     dryRun = false //Whether to run this as dry-run, without deploying
     publish = false //If version should be auto published after an upload
 
-    configurations = [ 'archives' ]
+    //configurations = [ 'archives' ]
     publications = ['mavenJava']
 
     pkg {
@@ -179,10 +139,10 @@ bintray {
 
         //Optional version descriptor
         version {
-            name = '0.2'
+            name = '0.3'
             //desc = 'optional, version-specific description'
             //released  = 'optional, date of the version release' //2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
-            vcsTag = '0.2'
+            vcsTag = '0.3'
         }
     }
 }

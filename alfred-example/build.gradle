@@ -7,7 +7,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:0.13.2'
-        classpath 'com.ubiquoid.alfred:alfred-plugin:0.2'
+        classpath 'com.ubiquoid.alfred:alfred-plugin:0.3'
     }
 }
 
