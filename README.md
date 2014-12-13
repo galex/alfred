@@ -8,32 +8,28 @@ Simply add `@CheckThread` to your methods and you will automatically get the nam
 your method runs in.
 
 ```java
+private class CheckThreadAsyncTask extends AsyncTask<Void, Void, Void> {
 
-    private class CheckThreadAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        @CheckThread
-        @Override protected void onPreExecute() {
-
-            super.onPreExecute();
-        }
-
-        @CheckThread
-        protected Void doInBackground(Void... params) {
-
-            return null;
-        }
-
-        @CheckThread
-        @Override protected void onPostExecute(Void aVoid) {
-
-            super.onPostExecute(aVoid);
-        }
+    @CheckThread
+    @Override protected void onPreExecute() {
+        super.onPreExecute();
     }
+
+    @CheckThread
+    protected Void doInBackground(Void... params) {
+        return null;
+    }
+
+    @CheckThread
+    @Override protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+    }
+}
 ```
 ```
-    V/Alfred  ( 7788): CheckThread MainActivity$CheckThreadAsyncTask#onPreExecute @[MainThread]
-    V/Alfred  ( 7788): CheckThread MainActivity$CheckThreadAsyncTask#doInBackground @[AsyncTask #3]
-    V/Alfred  ( 7788): CheckThread MainActivity$CheckThreadAsyncTask#onPostExecute @[MainThread]
+V/Alfred  (1): CheckThread MainActivity$CheckThreadAsyncTask#onPreExecute @[MainThread]
+V/Alfred  (1): CheckThread MainActivity$CheckThreadAsyncTask#doInBackground @[AsyncTask #3]
+V/Alfred  (1): CheckThread MainActivity$CheckThreadAsyncTask#onPostExecute @[MainThread]
 ```
 
 Every annotation helper will happen in debug builds and the annotation itself is never present in the
