@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        maven { url "http://dl.bintray.com/galex/maven" }
         jcenter()
         mavenLocal()
     }
@@ -13,7 +12,6 @@ buildscript {
 
 dependencies {
     repositories {
-        maven { url "http://dl.bintray.com/galex/maven" }
         mavenCentral()
         mavenLocal()
     }

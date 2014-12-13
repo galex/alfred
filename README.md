@@ -1,8 +1,9 @@
 Alfred
 ======
 
-Annotation-triggered helpers for your project. Alfred at your service.
+[ ![Download](https://api.bintray.com/packages/galex/maven/com.ubiquoid.alfred/images/download.svg) ](https://bintray.com/galex/maven/com.ubiquoid.alfred/_latestVersion)
 
+Annotation-triggered helpers for your project. Alfred at your service.
 
 Simply add `@CheckThread` to your methods and you will automatically get the name of the Thread
 your method runs in.

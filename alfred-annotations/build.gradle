@@ -42,6 +42,8 @@ publishing {
     }
 }
 
+def artefactName = GROUP
+
 bintray {
     user bintray_user
     key bintray_pass
@@ -52,7 +54,7 @@ bintray {
 
     pkg {
         repo = 'maven'
-        name = GROUP + ":alfred-annotations"
+        name = artefactName
         desc = 'Annotation-triggered helpers'
         websiteUrl = 'https://github.com/galex/alfred/'
         issueTrackerUrl = 'https://github.com/galex/alfred/issues'
