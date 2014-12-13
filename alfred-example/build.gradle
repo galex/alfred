@@ -1,17 +1,19 @@
 buildscript {
     repositories {
+        maven { url "http://dl.bintray.com/galex/maven" }
         jcenter()
         mavenLocal()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:0.13.2'
-        classpath 'com.ubiquoid.alfred:alfred-plugin:1.0-SNAPSHOT'
+        classpath 'com.ubiquoid.alfred:alfred-plugin:0.2'
     }
 }
 
 dependencies {
     repositories {
+        maven { url "http://dl.bintray.com/galex/maven" }
         mavenCentral()
         mavenLocal()
     }

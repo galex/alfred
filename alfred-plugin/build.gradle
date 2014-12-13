@@ -1,5 +1,7 @@
 apply plugin: 'groovy'
-apply plugin: 'nexus'
+//apply plugin: 'nexus'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 dependencies {
   compile gradleApi()
@@ -9,7 +11,69 @@ dependencies {
   compile 'org.aspectj:aspectjrt:1.8.1'
 }
 
-modifyPom {
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// add javadoc/source jar tasks as artifacts
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'com.ubiquoid.alfred'
+            artifactId 'alfred-plugin'
+            version '0.2'
+            from components.java
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+
+            artifact javadocJar {
+                classifier "javadoc"
+            }
+        }
+    }
+}
+
+bintray {
+    user bintray_user
+    key bintray_pass
+
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = false //If version should be auto published after an upload
+    pkg {
+        repo = 'maven'
+        name = 'alfred'
+        desc = 'Annotation-triggered helpers'
+        websiteUrl = 'https://github.com/galex/alfred/'
+        issueTrackerUrl = 'https://github.com/galex/alfred/issues'
+        vcsUrl = 'https://github.com/galex/alfred/'
+        licenses = ['Apache-2.0']
+        labels = ['android', 'alfred', 'annotations']
+        publicDownloadNumbers = true
+        publications = ['mavenJava']
+        //Optional version descriptor
+        version {
+            name = '0.2'
+            //desc = 'optional, version-specific description'
+            //released  = 'optional, date of the version release' //2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
+            vcsTag = '0.2'
+        }
+    }
+}
+
+/*modifyPom {
   project {
     name "Alfred Plugin"
     description POM_DESCRIPTION
@@ -36,4 +100,4 @@ modifyPom {
       }
     }
   }
-}
+}*/

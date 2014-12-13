@@ -26,10 +26,10 @@ class AlfredPlugin implements Plugin<Project> {
     }
 
     project.dependencies {
-      debugCompile 'com.ubiquoid.alfred:alfred-runtime:1.0-SNAPSHOT'
+      debugCompile 'com.ubiquoid.alfred:alfred-runtime:0.2'
       // TODO this should come transitively
       debugCompile 'org.aspectj:aspectjrt:1.8.1'
-      compile 'com.ubiquoid.alfred:alfred-annotations:1.0-SNAPSHOT'
+      compile 'com.ubiquoid.alfred:alfred-annotations:0.2'
     }
 
     variants.all { variant ->
