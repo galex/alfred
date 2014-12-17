@@ -45,7 +45,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.ubiquoid.alfred:alfred-plugin:1.0'
+    classpath 'com.ubiquoid.alfred:alfred-plugin:0.3'
   }
 }
 
